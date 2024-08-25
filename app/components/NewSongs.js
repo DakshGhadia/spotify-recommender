@@ -18,6 +18,7 @@ export default function NewSongs({ session, artists, tracks }) {
         },
       }
     );
+
     setData(await res.json());
     setLoading(false);
     return data;
