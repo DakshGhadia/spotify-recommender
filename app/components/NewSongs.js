@@ -19,6 +19,11 @@ export default function NewSongs({ session, artists, tracks }) {
       }
     );
 
+    if (res.status === 401) {
+      // If unauthorized, redirect to sign-in page (access token might be expired)
+      redirect("/api/auth/signin");
+    }
+
     setData(await res.json());
     setLoading(false);
     return data;

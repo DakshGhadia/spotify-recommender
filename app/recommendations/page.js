@@ -20,6 +20,11 @@ export default async function Home() {
     }
   );
 
+  if (resA.status === 401) {
+    // If unauthorized, redirect to sign-in page (access token might be expired)
+    redirect("/api/auth/signin");
+  }
+
   const artists = await resA.json();
 
   const resT = await fetch(
